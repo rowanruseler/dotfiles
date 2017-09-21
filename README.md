@@ -19,9 +19,15 @@ Package manager:
 pacman -S vim git
 ```
 
-Github clone:
+Setup vim:
+
 ``` bash
-git clone git@github.com:VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone git@github.com:rowanruseler/dotfiles.git /tmp/dotfiles \
+  && mkdir -p ~/.vim/bundle/ \
+  && mv /tmp/dotfiles/.vim/* ~/.vim/. \
+  && mv /tmp/dotfiles/.vimrc ~/.vimrc \
+  && git clone git@github.com:VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
+  && rm -I /tmp/dotfiles
 ```
 
 Install all vim plugins, execute command in `~/.vim/plugins.vim`:
