@@ -59,7 +59,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # background
-exec feh --bg-scale /home/rowan_ruseler/.config/i3/black.png
+exec feh --bg-scale /home/rowan/.config/i3/black.png
 
 # workspaces
 set $ws1 1
