@@ -58,12 +58,10 @@ swapon /dev/mapper/vg0-swap
 #### mount
 
 ``` bash
-mkdir -p /mnt/boot/efi
-```
-
-``` bash
-mount /dev/mapper/vg0r-root /mnt
+mount /dev/mapper/vg0-root /mnt
+mkdir /mnt/boot
 mount /dev/sdX2 /mnt/boot
+mkdir /mnt/boot/efi
 mount /dev/sdX1 /mnt/boot/efi
 ```
 
@@ -100,7 +98,7 @@ hwclock --systohc --utc
 ``` bash
 echo LANG=en_US.UTF-8 >> /etc/locale.conf
 echo LANGUAGE=en_US >> /etc/locale.conf
-echo LC_ALL=C >> /etc/locale.conf
+echo LC_ALL= >> /etc/locale.conf
 ```
 
 Uncomment en_US.UTF-8 UTF-8 within `/etc/locale.gen`
