@@ -4,6 +4,9 @@ set $mod Mod4
 # font
 font pango:monospace 8
 
+gaps inner 10
+gaps outer 10
+
 # floating
 floating_modifier $mod
 
@@ -186,17 +189,17 @@ bar {
         statusline $foreground
 
         # State             Border  BG      Text
-        focused_workspace   $color8 $color8 $color12
-        active_workspace    $color8 $color0 $color12
-        inactive_workspace  $color8 $color0 $color4
-        urgent_workspace    $color8 $color0 $color1
-        binding_mode        $color8 $color0 $color12
+        focused_workspace   $color0 $color0 $color12
+        active_workspace    $color0 $color0 $color12
+        inactive_workspace  $color0 $color0 $color4
+        urgent_workspace    $color0 $color0 $color1
+        binding_mode        $color0 $color0 $color12
     }
 }
 
 # programs
 bindsym $mod+Shift+f exec pcmanfm
-bindsym $mod+Ctrl+f exec firefox
+bindsym $mod+Ctrl+f exec firefox-beta
 bindsym $mod+Ctrl+q exec qutebrowser
 
 # screenshot
