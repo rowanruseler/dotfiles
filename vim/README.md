@@ -40,7 +40,7 @@ Install all vim plugins, execute command in `~/.vim/plugins.vim`:
 
 ### Text editor
 
-You can exit vim by colon (:) character 'q'.
+You can exit vim by colon (:) and character 'q'.
 
 Start the text editor:
 
