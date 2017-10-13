@@ -148,5 +148,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 exit
 umount -R /mnt
 swapoff -a
+# Don't forget to remove the cd/usb
 reboot
 ```
+
+#### Post install instructions
+
+* [rowanruseler/dotfiles/xorg] 
