@@ -1,4 +1,26 @@
-# Rowan's dotfiles
+# Arch Linux
+![Arch Linux Logo Dark](https://www.archlinux.org/static/logos/archlinux-logo-black-90dpi.0c696e9c0d84.png)
+
+Official website: https://www.archlinux.org/
+
+#### Table of Contents
+
+1. [Bootable USB][Bootable USB]
+2. [disk][disk]
+    * [partition size][partition size]
+    * [encryption][encryption]
+    * [logical volume][logical volume]
+    * [swap test][swap test]
+    * [mount][mount]
+    * [pacstrap][pacstrap]
+    * [fstab][fstab]
+3. [arch-chroot][arch-chroot]
+    * [locale][locale]
+    * [accounts][accounts]
+    * [mkinitcpio][mkinitcpio]
+    * [grub][grub]
+    * [reboot][reboot]
+4. [Post install instructions][Post install instructions]
 
 ## Setup
 
@@ -13,7 +35,7 @@ dd bs=4M if=archlinux.iso of=/dev/sdX status=progress && sync
 ```
 
 ### disk
-#### parition size
+#### partition size
 
 ``` bash
 cgdisk /dev/sdX
@@ -52,7 +74,12 @@ mkswap /dev/mapper/vg0-swap
 #### swap test
 
 ``` bash
+# activate swap
 swapon /dev/mapper/vg0-swap
+# swap devices and sizes
+swapon -s
+# virtual memory detailed
+vmstat
 ```
 
 #### mount
@@ -147,6 +174,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ``` bash
 exit
 umount -R /mnt
+# deactive swap
 swapoff -a
 # Don't forget to remove the cd/usb
 reboot
@@ -155,5 +183,23 @@ reboot
 #### Post install instructions
 
 * [xorg]
+
+
+[Bootable USB]: #bootable-usb
+[disk]: #disk
+[partition size]: #partition-size
+[encryption]: #encryption
+[logical volume]: #logical-volume
+[swap test]: #swap-test
+[mount]: #mount
+[pacstrap]: #pacstrap
+[fstab]: #fstab
+[arch-chroot]: #arch-chroot
+[locale]: #locale
+[accounts]: #accounts
+[mkinitcpio]: #mkinitcpio
+[grub]: #grub
+[reboot]: #reboot
+[Post install instructions]: #Post-install-instructions
 
 [xorg]: https://github.com/rowanruseler/dotfiles/tree/master/xorg
