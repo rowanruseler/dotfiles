@@ -154,4 +154,6 @@ reboot
 
 #### Post install instructions
 
-* [rowanruseler/dotfiles/xorg] 
+* [xorg]
+
+[xorg]: https://github.com/rowanruseler/dotfiles/tree/master/xorg
