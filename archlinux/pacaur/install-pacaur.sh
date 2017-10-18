@@ -24,7 +24,6 @@ install_pkg() {
   esac
 }
 
-
 main() {
   # install pacaur dependencies
   sudo pacman -S expac yajl --noconfirm --needed
