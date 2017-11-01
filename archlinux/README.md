@@ -31,7 +31,7 @@ Download the ISO from the website: https://www.archlinux.org/download/
 
 #### MD5SUM check
 
-e.g. - best if iso and MD5SUM file are within the same directory:
+Create a MD5SUM file in the same directory as the ISO, e.g.:
 ``` bash
 cd ~/Downloads
 echo "9dbe3045aab5c7993b0c0c4033cb97f4 *archlinux.iso" > ./MD5SUM
