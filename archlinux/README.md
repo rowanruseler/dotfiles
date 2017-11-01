@@ -25,10 +25,20 @@ Official website: https://www.archlinux.org/
 ## Setup
 
 ### Bootable USB
+#### download
 
 Download the ISO from the website: https://www.archlinux.org/download/
-Make sure to check the md5sum against the downloaded iso.
 
+#### MD5SUM check
+
+e.g. - best if iso and MD5SUM file are within the same directory:
+``` bash
+cd ~/Downloads
+echo "9dbe3045aab5c7993b0c0c4033cb97f4 *archlinux.iso" > ./MD5SUM
+md5sum -c MD5SUM
+```
+
+#### mount ISO file
 
 ``` bash
 dd bs=4M if=archlinux.iso of=/dev/sdX status=progress && sync
@@ -62,7 +72,7 @@ cryptsetup luksOpen /dev/sdX3 luks
 ``` bash
 pvcreate /dev/mapper/luks
 vgcreate vg0 /dev/mapper/luks
-lvcreate --size 9G vg0 --name swap
+lvcreate --size 8G vg0 --name swap
 lvcreate -l +100%FREE vg0 --name root
 ```
 
