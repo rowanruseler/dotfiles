@@ -160,7 +160,7 @@ passwd USERNAME
 
 modify `/etc/mkinitcpio.conf`
 > MODULES="ext4"
-> HOOKS="base udev autodetect modconf block encrypt lvm2 filesystems keyboard fsck"
+> HOOKS="base udev autodetect modconf block encrypt lvm2 resume filesystems keyboard fsck"
 
 ```bash
 mkinitcpio -p linux
@@ -173,6 +173,7 @@ grub-install
 ```
 
 modify `/etc/default/grub`
+> GRUB_CMDLINE_LINUX_DEFAULT="resume=/dev/mapper/vg0-swap"
 > GRUB_CMDLINE_LINUX="cryptdevice=/dev/sdX3:luks:allow-discards"
 
 ``` bash
