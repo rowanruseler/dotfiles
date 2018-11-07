@@ -168,7 +168,10 @@ set $color7 #d9d9d9
 set $color15 #f1f1f1
 
 # windows
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
+# Thunderbird
+for_window [class="^Thunderbird*"] floating enabled
+for_window [class="^Thunderbird*"] move workspace 2
 
 set $focus #ec7063
 set $iocus #52be80
@@ -200,7 +203,6 @@ bar {
 # programs
 bindsym $mod+Shift+f exec pcmanfm
 bindsym $mod+Ctrl+f exec firefox-beta
-bindsym $mod+Ctrl+q exec qutebrowser
 
 # screenshot
 bindsym $mod+Print exec gnome-screenshot -a
@@ -226,13 +228,16 @@ bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym XF86AudioStop exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
 
 # lockscreen
-bindsym $mod+Ctrl+l exec physlock
+bindsym $mod+Ctrl+l exec physlock -d
+
+# xrandr
+bindsym $mod+Shift+m exec --no-startup-id xrandr --output eDP1 --mode 1920x1080 --output HDMI1 --mode 1920x1080
+bindsym $mod+Shift+m exec --no-startup-id xrandr --output HDMI1 --mode 2560x1440 --output eDP1 --mode 1920x1080 --left-of HDMI1
+bindsym $mod+Shift+p exec --no-startup-id xrandr --output eDP1 --mode 1920x1080 --output HDMI1 --mode 1920x1080 --scale 1x1 --same-as eDP1
+bindsym $mod+Shift+h exec --no-startup-id xrandr --output HDMI1 --mode 1920x1080 --output eDP1 --mode 1920x1080 --left-of HDMI1
+bindsym $mod+Ctrl+m exec --no-startup-id xrandr --output eDP1 --mode 1920x1080 --output HDMI1 --off
 
 # startup
-#bindsym $mod+Shift+m exec --no-startup-id xrandr --output DP1-3 --mode 1920x1080 --output HDMI1 --mode 1920x1080 --right-of DP1-3 --output eDP1 --off
-bindsym $mod+Shift+m exec --no-startup-id xrandr --output HDMI1 --mode 2560x1440 --output eDP1 --off
-bindsym $mod+Shift+h exec --no-startup-id xrandr --output HDMI1 --mode 1920x1080 --output eDP1 --off
-bindsym $mod+Ctrl+m exec --no-startup-id xrandr --output eDP1 --mode 1920x1080 --output HDMI1 --off
 exec --no-startup-id compton -f
 exec --no-startup-id xset m 0 0
 exec --no-startup-id /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
