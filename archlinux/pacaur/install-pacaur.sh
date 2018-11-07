@@ -8,7 +8,6 @@ install_pkg() {
   # query database
   [[ -n "$(pacman -Qs "$pkg")" ]] && { return 0; }
 
-
   # download PKGBUILD
   echo
   read -rp ":: Download $pkg build files? [Y/n] " bool
@@ -16,7 +15,7 @@ install_pkg() {
     [nN][oO]|[nN]) return 1 ;;
     *) curl -o PKGBUILD "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=${pkg}" ;;
   esac
-  
+
   # makepkg
   case "$pkg" in
     cower) makepkg PKGBUILD --skippgpcheck --install --needed ;;
