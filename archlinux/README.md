@@ -41,7 +41,7 @@ md5sum -c MD5SUM
 #### mount ISO file
 
 ``` bash
-dd bs=4M if=archlinux.iso of=/dev/sdX status=progress && sync
+dd bs=4M if=archlinux.iso of=/dev/sdX status=progress oflag=sync
 ```
 
 ### disk
