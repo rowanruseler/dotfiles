@@ -6,9 +6,15 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-PS1='\w/. '
+#PS1='\w/. '
+PS1='\[\033]0;\u@\h:\w\007\]'
+PS1+='\[\033[01;31m\]\h\[\033[01;34m\] \w \$\[\033[00m\] '
+
 TERM=rxvt
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
+# re-use ssh-agent and/or gpg-agent between logins
+eval $(keychain --eval --quiet id_rsa id_rsa)
 
 # Exported variables
 export EDITOR=vim
@@ -23,6 +29,7 @@ alias j='jobs-l'
 alias df='df -kTh'
 alias vrc='vim ~/.vimrc'
 alias brc='vim ~/.bashrc'
+alias pdf='evince'
 alias mini='sudo minicom -D /dev/ttyUSB0'
 alias which='type -a'
 alias mkdir='mkdir -p'
@@ -43,6 +50,15 @@ alias lr='ll -R'           #  Recursive ls.
 alias la='ll -A'           #  Show hidden files.
 alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 
+# transmission
+tsm() { transmission-remote -l; }
+tsm-add() { transmission-remote -a "$1"; }
+tsm-info() { transmission-remote -t "$1" -i; }
+tsm-stop() { transmission-remote -t "$1" --stop; }
+tsm-start() { transmission-remote -t "$1" --start; }
+tsm-purge() { transmission-remote -t "$1" --remove-and-delete; }
+tsm-remove() { transmission-remote -t "$1" -r; }
+
 # Personnal Aliases within functions
 git() {
   if [[ $@ == "log" ]]; then
@@ -53,3 +69,6 @@ git() {
     command git "$@"
   fi
 }
+
+# Kubernetes command-line tool
+source <(kubectl completion bash)
