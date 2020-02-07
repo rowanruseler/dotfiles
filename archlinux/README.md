@@ -125,7 +125,6 @@ arch-chroot /mnt /bin/bash
 ```
 
 ``` bash
-rm /etc/localtime
 ln -s /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
 hwclock --systohc --utc
 ```
