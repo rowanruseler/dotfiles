@@ -105,7 +105,7 @@ mount /dev/sdX1 /mnt/boot/efi
 #### pacstrap
 
 ``` bash
-pacstrap /mnt base base-devel grub-efi-x86_64 vim git efibootmgr dialog wpa_supplicant
+pacstrap /mnt base base-devel linux linux-firmware grub-efi-x86_64 vim git efibootmgr dialog wpa_supplicant
 ```
 
 #### fstab
