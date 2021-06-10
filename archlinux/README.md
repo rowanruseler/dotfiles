@@ -21,6 +21,8 @@ Official website: https://www.archlinux.org/
     * [grub][grub]
     * [reboot][reboot]
 4. [Post install instructions][Post install instructions]
+    * [xorg][xorg]
+    * [bluetooth][bluetooth]
 
 ## Setup
 
@@ -194,6 +196,69 @@ reboot
 
 * [xorg]
 
+##### Bluetooth
+
+Packages
+
+``` bash
+pacman -S pulseaudio-bluetooth \
+          pulseaudio-alsa \
+          pavucontrol \
+          bluez \
+          bluez-utils
+
+systemctl enable bluetooth
+systemctl start bluetooth
+```
+
+Configuration
+
+``` bash
+vim /etc/bluetooth/main.cf
+
+AutoEnable=true
+```
+
+```
+mkdir -p ~/.config/pulse
+cp /etc/pulse/* ~/.config/pulse/
+
+echo "load-module module-switch-on-connect" >> ~/.config/pulse/default.pa
+
+systemctl restart bluetooth
+```
+
+Add device
+
+``` bash
+bluetoothctl
+
+[bluetooth]# power on
+[bluetooth]# agent on
+[bluetooth]# default-agent
+[bluetooth]# scan on
+
+[NEW] Device 00:00:00:00:00:00 XXX 555
+
+[bluetooth]# scan off
+[bluetooth]# pair 00:00:00:00:00:00
+[bluetooth]# connect 00:00:00:00:00:00
+[bluetooth]# trust 00:00:00:00:00:00
+
+[bluetooth]# exit
+```
+
+Remove device
+
+``` bash
+bluetoothctl
+
+[bluetooth]# paired-devices
+Device 00:00:00:00:00:00 XXX 555
+
+[bluetooth]# remove 00:00:00:00:00:00
+```
+
 
 [Bootable USB]: #bootable-usb
 [disk]: #disk
@@ -213,3 +278,4 @@ reboot
 [Post install instructions]: #Post-install-instructions
 
 [xorg]: https://github.com/rowanruseler/dotfiles/tree/master/xorg
+[bluetooth]: #bluetooth
